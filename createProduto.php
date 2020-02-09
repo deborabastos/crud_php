@@ -1,24 +1,54 @@
 <?php
-print_r($_POST);
+// print_r($_POST);
+
 
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
-if(!isset($nome)){
-    $nome = '';
+$nome = $preco = $descricao = $imagem = '';
+
+// Definindo array de erros
+$errors = array('nome' => '','preco' => '', 'imagem' => '');
+
+
+// Executar apenas após o SUBMIT
+if(isset($_POST['submit'])){
+
+    // Checando nome
+    if(empty($_POST['nome'])){
+        $errors['nome'] = 'Você precisa digitar o nome do produto';
+
+    } elseif (strlen($_POST['nome']) < 6) {
+        $errors['nome'] = 'Digite o nome do produto com no mínimo de 6 letras';
+    } else {
+        $nome = $_POST['nome'];
+    };
+
+    // Chegando preco
+    if((!empty($_POST['preco'])) && (!filter_var($_POST['preco'], FILTER_VALIDATE_FLOAT))) {
+        $errors['preco'] = 'O preço deve ser um número';
+    } else {
+        $preco = $_POST['preco'];
+    };
+
+    // Definindo descrição pós submit (para lembrar o que for preenchido)
+    $descricao = $_POST['descricao'];
+
+    // Checando imagem
+    if(empty($_POST['imagem'])){
+        $errors['imagem']= 'Você precisa escolher uma imagem';
+    } else {
+        $imagem = $_POST['imagem'];
+    };
+
+    //Verificando se há erros no form para, então, enviar
+    if(array_filter($errors)){
+        echo 'Corrija os erros do formulário';
+    } else {
+        // echo 'form é válido';
+        // enviar dados para json
+    };
+
+
 };
-
-if(!isset($preco)){
-    $preco = '';
-};
-
-if(!isset($descricao)){
-    $descricao = '';
-};
-
-if(!isset($imagem)){
-    $imagem = '';
-};
-
-
 
 
 ?>
@@ -80,16 +110,16 @@ if(!isset($imagem)){
                 <h1 class="col-12">Adicionar Produto</h1>
             </div>
 
-            <form action="validation.php" method="POST" class="">
+            <form action="#" method="POST" class="">
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
                             <label for="nome">Nome:</label>
-                            <input type="text" name="nome" id="nome" class="form-control" value="<?= $nome?>" >
+                            <input type="text" name="nome" id="nome" class="form-control" value="<?= $nome ?>" >
                             <div class="text-danger font-weight-bold">
-                                <?php if(isset($nome_error)){ ?>
-                                    <p><?= $nome_error ?></p>
-                                <?php } ?>
+                                
+                                    <p><?= $errors['nome'] ?></p>
+                            
                             </div>
                         </div>
                     </div>
@@ -99,9 +129,7 @@ if(!isset($imagem)){
                             <label for="preco">Preço:</label>
                             <input type="text" name="preco" id="preco" class="form-control" placeholder="R$ 00,00" value="<?= $preco ?>">
                             <div class="text-danger font-weight-bold">
-                                <?php if(isset($preco_error)){ ?>
-                                    <p><?= $preco_error ?></p>
-                                <?php } ?>
+                                 <p><?= $errors['preco'] ?></p>
                             </div>    
                         </div>
                     </div>
@@ -121,9 +149,9 @@ if(!isset($imagem)){
                             <label for="imagem" class="custom-file-label">Selecione a foto</label>
                             <input type="file" name="imagem" id="imagem" class="custom-file-input" accept="image/*"><br>
                                 <div class="text-danger font-weight-bold">
-                                    <?php if(isset($imagem_error)){ ?>
-                                        <p><?= $imagem_error ?></p>
-                                    <?php } ?>
+                                 
+                                        <p><?= $errors['imagem'] ?></p>
+                                 
                                 </div>
                         </div>
                     </div>
@@ -131,7 +159,7 @@ if(!isset($imagem)){
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <button type="submit" name="adiciona-produto" class="btn btn-primary btn-block">Adicionar</button>
+                            <button type="submit" name="submit" value="submit" class="btn btn-primary btn-block">Adicionar</button>
                         </div>
                     </div>
                 </div>
