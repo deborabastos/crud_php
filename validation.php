@@ -6,8 +6,6 @@ $preco = $_POST['preco'];
 $descricao = $_POST['descricao'];
 $imagem = $_POST['imagem'];
 
-$error = []
-
 
 // Verifica se os dados obrigatórios foram preenchidos, caso contrário, retorna erro
     if(empty($nome)){
