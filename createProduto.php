@@ -1,7 +1,7 @@
 <?php
 // print_r($_POST);
 
-
+// ****************************** VALIDAÇAO ****************************** 
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
 $nome = $preco = $descricao = $imagem = '';
 
@@ -39,6 +39,10 @@ if(isset($_POST['submit'])){
         $imagem = $_POST['imagem'];
     };
 
+
+
+
+    // ****************************** GRAVANDO EM JSON ****************************** 
     //Verificando se há erros no form para, então, enviar
     if(array_filter($errors)){
         echo 'Corrija os erros do formulário';
@@ -47,21 +51,20 @@ if(isset($_POST['submit'])){
         // enviar dados para json
         
         if(file_exists('produtos.json')){
-            echo 'arquivo existe';
-            // $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
-            // $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
-            // $novos_dados = array(                               // captura dados entrados no forumlário
-            //     'nome' => $_POST['nome'],
-            //     'preco' => $_POST['preco'],
-            //     'descricao' => $_POST['descricao'],
-            //     'imagem' => $_POST['imagem']
-            // );
-            // $php_dados_existentes[] = $novos_dados;   // coloca dados existentes no array de dados existentes
-            // $json_produtos = json_encode($array_dados_existentes);
+            $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
+            $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
+            $novos_dados = array(                               // captura dados entrados no forumlário
+                'nome' => $_POST['nome'],
+                'preco' => $_POST['preco'],
+                'descricao' => $_POST['descricao'],
+                'imagem' => $_POST['imagem']
+            );
+            $php_dados_existentes[] = $novos_dados;   // coloca dados existentes no array de dados existentes
+            $json_produtos = json_encode($php_dados_existentes);
             
-            // if(file_put_contents('produtos.json', $produtos)){
-            //     echo 'Produto salvo com sucesso';
-            // };
+            if(file_put_contents('produtos.json', $json_produtos)){
+                echo 'Produto salvo com sucesso';
+            };
         } else {
             echo 'JSON file não existe';
         }; 
