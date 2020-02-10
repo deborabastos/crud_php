@@ -1,30 +1,24 @@
 [
     {
-        "id": 1,
-        "nome": "IPhone 7Plus Debora",
-        "preco": "2000",
-        "descricao": "Lindo Iphone",
-        "imagem": "iphone.jpg"
+        "id": "1",
+        "nome": "IPhone 7",
+        "preco": "2500",
+        "descricao": "Novinho, 3 meses de uso",
+        "imagem": "iphone.jpeg"
     },
     {
-        "id": 2,
+        "id": "2",
         "nome": "Bicicleta",
-        "preco": "300",
-        "descricao": "Maravilhosa bicicleta",
-        "imagem": "bike.jpg"
+        "preco": "400",
+        "descricao": "Marcas normais de uso",
+        "imagem": "bike.jpeg"
     },
     {
-        "id": 3,
-        "nome": "Garrafinha da copa",
-        "preco": "10",
-        "descricao": "Souvenir da copa do mundo",
-        "imagem": "garrafa_copa.jpg"
-    },
-    {
-        "id": 4,
+        "id": "3",
         "nome": "TV 55'",
-        "preco": "2400",
-        "descricao": "Excelente TV de 55'. Seminova.",
-        "imagem": "tv.jpg"
+        "preco": "1200",
+        "descricao": "Excelente TV de 55'. \u00d3timo custo-benef\u00edcio",
+        "imagem": "tv.jpeg"
     }
+
 ]

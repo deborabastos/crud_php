@@ -1,5 +1,26 @@
+<?php
+require_once('produtos.php');
+
+if (!isset($_GET['id'])){
+    include_once('./includes/not_found.php');
+    exit;
+}
+
+$produtoId = $_GET['id'];
+
+$produto = getProdutoById($produtoId);
+
+if (!isset($produto)){
+    include_once('./includes/not_found.php');
+    exit;
+}
+
+
+?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +33,42 @@
     <link rel="stylesheet" href="style.css">
 
 
-    <title>Document</title>
+    <title><?= $produto['nome'] ?></title>
 </head>
 <body>
     <header>
         <?php include("./includes/nav.php"); ?>
     </header>    
 
+    <main>
+        <div class="container my-5">
+            <h1><?= $produto['nome'] ?></h1>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Nome: </th>
+                        <td> <?= $produto['nome']?> </td>
+                    </tr>
+                    <tr>
+                        <th>Descrição: </th>
+                        <td> <?= $produto['descricao']?> </td>
+                    </tr>
+                    <tr>
+                        <th>Preço: </th>
+                        <td> <?= $produto['preco']?> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                                <a href="editProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-info" >Editar</a>
+                                <a href="deleteProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-danger" >Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+        </div>
+    </main>
 
 
     <!-- Optional JavaScript -->

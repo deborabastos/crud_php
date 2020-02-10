@@ -1,7 +1,7 @@
 <?php 
 require('produtos.php');
 
-$produtos = getProduto();
+$produtos = getProdutos();
 
 ?>
 
@@ -29,7 +29,6 @@ $produtos = getProduto();
     </header>    
 
     <main>
-
         <div class="container my-5">
             <h1>Lista de Produtos</h1>
             <table class="table table-bordered">
@@ -50,6 +49,7 @@ $produtos = getProduto();
                         <td> <?= $produto['descricao']?> </td>
                         <td> <?= $produto['preco']?> </td>
                         <td>
+                            <a href="showProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-warning" >Visualizar</a>
                             <a href="editProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-info" >Editar</a>
                             <a href="deleteProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-danger" >Excluir</button>
                         </td>
