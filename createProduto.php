@@ -45,16 +45,39 @@ if(isset($_POST['submit'])){
     } else {
         // echo 'form é válido';
         // enviar dados para json
+        
+        if(file_exists('produtos.json')){
+            echo 'arquivo existe';
+            // $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
+            // $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
+            // $novos_dados = array(                               // captura dados entrados no forumlário
+            //     'nome' => $_POST['nome'],
+            //     'preco' => $_POST['preco'],
+            //     'descricao' => $_POST['descricao'],
+            //     'imagem' => $_POST['imagem']
+            // );
+            // $php_dados_existentes[] = $novos_dados;   // coloca dados existentes no array de dados existentes
+            // $json_produtos = json_encode($array_dados_existentes);
+            
+            // if(file_put_contents('produtos.json', $produtos)){
+            //     echo 'Produto salvo com sucesso';
+            // };
+        } else {
+            echo 'JSON file não existe';
+        }; 
+
+
     };
 
 
+    
 };
 
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,8 +85,8 @@ if(isset($_POST['submit'])){
 
  
 
-     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Meu CSS -->
     <link rel="stylesheet" href="style.css">
@@ -72,43 +95,12 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#">&lt;Desafio PHP/&gt;</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Adicionar Produto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Usuários</a>
-                        </li>
-                    </ul>
-                    <span class="nav-item">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Logout</a>
-                            </li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
-        </nav>
+        <?php include("./includes/nav.php"); ?>
     </header>
 
     <main>
         <div class="container my-5">
-            <div class="row">
-                <h1 class="col-12">Adicionar Produto</h1>
-            </div>
+                <h1>Adicionar Produto</h1>
 
             <form action="#" method="POST" class="">
                 <div class="row">
