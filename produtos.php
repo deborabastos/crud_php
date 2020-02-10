@@ -1,25 +1,26 @@
 <?php
 
-function getUsers(){
-
+function getProduto(){
+    return json_decode(file_get_contents('produtos.json'), true);
 };
 
-function getUserByID($id){
 
-};
+// function getProdutoByID($id){
 
-function createUser($data){
+// };
 
-};
+// function createProduto($data){
 
-function updateUser($data, $id){
+// };
 
-};
+// function updateProduto($data, $id){
 
-function deleteUser($id){
+// };
+
+// function deleteProduto($id){
 
 
-};
+// };
 
 
 

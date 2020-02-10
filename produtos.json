@@ -1,1 +1,30 @@
-[{"nome":"IPhone 7Plus Debora","preco":"","descricao":"","imagem":"ACN-0023-158_zoom1.jpg"},{"nome":"debora","preco":"999","descricao":"lsdkjflkdsjfalesk","imagem":"ACN-0023-158_zoom1.jpg"},{"nome":"conseguiii","preco":"100","descricao":"maravilha","imagem":"ACN-0023-158_zoom1.jpg"},{"nome":"conseguiii","preco":"100","descricao":"maravilha","imagem":"ACN-0023-158_zoom1.jpg"}]
+[
+    {
+        "id": 1,
+        "nome": "IPhone 7Plus Debora",
+        "preco": "2000",
+        "descricao": "Lindo Iphone",
+        "imagem": "iphone.jpg"
+    },
+    {
+        "id": 2,
+        "nome": "Bicicleta",
+        "preco": "300",
+        "descricao": "Maravilhosa bicicleta",
+        "imagem": "bike.jpg"
+    },
+    {
+        "id": 3,
+        "nome": "Garrafinha da copa",
+        "preco": "10",
+        "descricao": "Souvenir da copa do mundo",
+        "imagem": "garrafa_copa.jpg"
+    },
+    {
+        "id": 4,
+        "nome": "TV 55'",
+        "preco": "2400",
+        "descricao": "Excelente TV de 55'. Seminova.",
+        "imagem": "tv.jpg"
+    }
+]

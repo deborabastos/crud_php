@@ -47,9 +47,8 @@ if(isset($_POST['submit'])){
     if(array_filter($errors)){
         echo 'Corrija os erros do formulário';
     } else {
-        // echo 'form é válido';
-        // enviar dados para json
-        
+
+        // enviar dados para json        
         if(file_exists('produtos.json')){
             $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
             $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode

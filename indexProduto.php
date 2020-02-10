@@ -1,3 +1,11 @@
+<?php 
+require('produtos.php');
+
+$produtos = getProduto();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,7 +21,7 @@
     <link rel="stylesheet" href="style.css">
 
 
-    <title>Document</title>
+    <title>Lista de Produtos</title>
 </head>
 <body>
     <header>
@@ -35,37 +43,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($produtos as $produto): ?>
                     <tr>
-                        <td>1</td>
-                        <td>Produto 1</td>
-                        <td>Novo produto 1</td>
-                        <td>R$ 15</td>
+                        <td> <?= $produto['id']?> </td>
+                        <td> <?= $produto['nome']?> </td>
+                        <td> <?= $produto['descricao']?> </td>
+                        <td> <?= $produto['preco']?> </td>
                         <td>
-                            <a href="editProduto.php" role='button' class="btn btn-info" >Editar</a>
-                            <a href="#" role='button' class="btn btn-danger" >Excluir</button>
+                            <a href="editProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-info" >Editar</a>
+                            <a href="deleteProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-danger" >Excluir</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Produto 2</td>
-                        <td>Novo produto 3</td>
-                        <td>R$ 25</td>
-                        <td>
-                            <a href="editProduto.php" role='button' class="btn btn-info" >Editar</a>
-                            <a href="#" role='button' class="btn btn-danger" >Excluir</button>
-                        </td>
-                    </tr>
+                <?php endforeach;; ?>
                 </tbody>
 
 
             </table>
-
-
         </div>
-
-
-
-
     </main>
 
 
