@@ -63,6 +63,13 @@ if (!isset($produto)){
                                 <a href="deleteProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-danger" >Excluir</button>
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <input type='button' class="btn btn-primary" value='Voltar' onclick='history.go(-1)' />
+                        </td>
+                    </tr>
+
+
                 </tbody>
 
 

@@ -22,12 +22,13 @@ function getProdutoByID($id){
 
 function updateProduto($data, $id){
     $produtos = getProdutos();
-    foreach ($produtos as $produto){
+    foreach ($produtos as $i => $produto){
         if($id == $produto['id']){
-            return $produto;
+            $produtos[$i] = array_merge($produto, $data);
         };
     };
-    return null;
+
+    file_put_contents('produtos.json', json_encode($produtos));
 };
 
 // function deleteProduto($id){

@@ -1,6 +1,38 @@
 <?php
-require_once('./includes/valida_form.php');
 
+// ****************************** VALIDAÇAO ****************************** 
+// Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
+$nome = $preco = $descricao = $imagem = '';
+
+// Definindo array de erros
+$errors = array('nome' => '','preco' => '', 'imagem' => '');
+
+
+// Executar apenas após o SUBMIT
+if(isset($_POST['submit'])){
+
+    // Checando nome
+    if(empty($_POST['nome'])){
+        $errors['nome'] = 'Você precisa digitar o nome do produto';
+
+    } elseif (strlen($_POST['nome']) < 6) {
+        $errors['nome'] = 'Digite o nome do produto com no mínimo de 6 letras';
+    } else {
+        $nome = $_POST['nome'];
+    };
+
+    // Chegando preco
+    if((!empty($_POST['preco'])) && (!filter_var($_POST['preco'], FILTER_VALIDATE_FLOAT))) {
+        $errors['preco'] = 'O preço deve ser um número';
+    } else {
+        $preco = $_POST['preco'];
+    };
+
+    // Definindo descrição pós submit (para lembrar o que for preenchido)
+    $descricao = $_POST['descricao'];
+
+
+};
 require_once('produtos.php');
 
 // Verifica se foi passado parâmetro ID, se não, retorna erro
@@ -22,9 +54,22 @@ if (!isset($produto)){
 
 //
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    updateProduto($_POST, $produtoID);
+    updateProduto($_POST, $produtoId);
+    
+    if(isset($_FILES['picture'])) {
+        move_uploaded_file($_FILE['imagem']['tmp_name'], './img/$produtoId.jpeg');
+    
+
+    };
+    var_dump($_FILES);
+    exit;
+
 };
 
+    // header('location: indexProduto.php');
+
+
+// !!!!!!!!!!!!!!!!!!!! Está perdendo a imagem ao atualizar
 
 ?>
 
@@ -52,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         <div class="container my-5">
                 <h1>Editar Produto</h1>
 
-            <form action="#" method="POST" class="">
+            <form action="#" method="POST" class="" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
@@ -98,11 +143,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                         <div class="custom-file altura_file mb-2">
                             <label for="imagem" class="custom-file-label">Selecione a foto</label>
                             <input type="file" name="imagem" id="imagem" class="custom-file-input" accept="image/*"><br>
-                                <div class="text-danger font-weight-bold">
-                                 
-                                        <p><?= $errors['imagem'] ?></p>
-                                 
-                                </div>
                         </div>
                     </div>
                 </div>
