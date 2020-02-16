@@ -39,16 +39,16 @@ function updateProduto($data, $id){
 
 
 
-// function createProduto($data){
+function deleteProduto($id){
+    $produtos = getProdutos();
+    foreach ($produtos as $i => $produto){ // percorre toda a lista de produtos
+        if($id == $produto['id']){ // seleciona o produto que tem id igual àquela passada em parâmetro
+            array_splice($produtos, $i,1); 
+        };
+    };
+    file_put_contents('produtos.json', json_encode($produtos, JSON_PRETTY_PRINT)); // grava no arquivo produtos.json};
 
-// };
-
-
-
-// function deleteProduto($id){
-
-
-// };
+};
 
 
 

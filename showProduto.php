@@ -58,9 +58,21 @@ if (!isset($produto)){
                         <td> <?= $produto['preco']?> </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center;">
+                    <td colspan="2" style="text-align: center;">
+                    <?php if(isset($produto['imagem'])):?>
+                        <img style="width: 300px" class="m-2" src="./img/<?= $produto['imagem'] ?>" alt="" >
+                     <?php endif; ?>
+                    </td>
+
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="2" style="text-align: center">
                                 <a href="editProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-info" >Editar</a>
-                                <a href="deleteProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-danger" >Excluir</button>
+                                <form method="POST" action="deleteProduto.php" class="d-inline-block">
+                                    <input type="hidden" name="id" value="<?= $produto['id']; ?>">
+                                    <button class="btn btn-danger">Excluir</button>
+                                </form> 
                         </td>
                     </tr>
                     <tr>

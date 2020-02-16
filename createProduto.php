@@ -52,7 +52,12 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
         if(file_exists('produtos.json')){ // continua somente se o arquivo produtos.json existir
             $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
             $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
-            $novos_dados = array(                               // captura dados entrados no forumlário
+            
+            $ultimo_item = end($php_dados_existentes);
+            $ultimo_id = $ultimo_item['id'];
+            
+            $novos_dados = array( // captura dados entrados no forumlário
+                'id' => ++$ultimo_id,
                 'nome' => $_POST['nome'],
                 'preco' => $_POST['preco'],
                 'descricao' => $_POST['descricao'],
