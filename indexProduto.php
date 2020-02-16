@@ -61,12 +61,14 @@ $produtos = getProdutos();
                         <td> <?= $produto['descricao']?> </td>
                         <td> <?= $produto['preco']?> </td>
                         <td>
-                            <a href="showProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-warning" >Visualizar</a>
-                            <a href="editProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-info" >Editar</a>
-                            <form method="POST" action="deleteProduto.php">
-                                <input type="hidden" name="id" value="<?= $produto['id']; ?>">
-                                <button class="btn btn-danger">Excluir</button>
-                            </form>                            
+                            <div class="botoes">
+                                <a href="showProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-warning btn-sm mr-1" >Visualizar</a>
+                                <a href="editProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-info btn-sm mr-1" >Editar</a>
+                                <form method="POST" action="deleteProduto.php">
+                                    <input type="hidden" name="id" value="<?= $produto['id']; ?>">
+                                    <button class="btn btn-danger btn-sm">Excluir</button>
+                                </form>                            
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach;; ?>

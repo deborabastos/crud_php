@@ -113,8 +113,12 @@ if (isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido pre
 
     <main>
         <div class="container my-5">
-                <h1>Editar Produto</h1>
-
+            <div class="row px-3">
+                <h1 class="mr-auto">Editar Produto</h1>
+                <div>
+                    <input type='button' class="btn btn-primary btn-sm mt-2" value='Voltar' onclick='history.go(-1)' />
+                </div>
+            </div>
             <form action="#" method="POST" class="" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-6">
@@ -171,6 +175,9 @@ if (isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido pre
                         </div>
                     </div>
                 </div>
+
+
+
 
 
 

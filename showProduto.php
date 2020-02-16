@@ -45,7 +45,14 @@ if (!isset($produto)){
 
     <main>
         <div class="container my-5">
-            <h1><?= $produto['nome'] ?></h1>
+            <div class="row px-3">
+                <h1 class="mr-auto"><?= $produto['nome'] ?></h1>
+                <div>
+                    <input type='button' class="btn btn-primary btn-sm mt-2" value='Voltar' onclick='history.go(-1)' />
+                </div>
+            </div>
+
+
             <table class="table table-bordered">
                 <tbody>
                     <tr>
@@ -71,20 +78,13 @@ if (!isset($produto)){
                     
                     <tr>
                         <td colspan="2" style="text-align: center">
-                                <a href="editProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-info" >Editar</a>
+                                <a href="editProduto.php?id=<?= $produto['id']?>" role='button' class="btn btn-info btn-sm" >Editar</a>
                                 <form method="POST" action="deleteProduto.php" class="d-inline-block">
                                     <input type="hidden" name="id" value="<?= $produto['id']; ?>">
-                                    <button class="btn btn-danger">Excluir</button>
+                                    <button class="btn btn-danger btn-sm">Excluir</button>
                                 </form> 
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: center;">
-                            <input type='button' class="btn btn-primary" value='Voltar' onclick='history.go(-1)' />
-                        </td>
-                    </tr>
-
-
                 </tbody>
 
 
