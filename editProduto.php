@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
         $nome = $_POST['nome'];
     };
 
-    // Chegando preco
+    // Checando preco
     if((!empty($_POST['preco'])) && (!filter_var($_POST['preco'], FILTER_VALIDATE_FLOAT))) {
         $errors['preco'] = 'O preço deve ser um número';
     } else {
@@ -61,8 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     
 
     };
-    var_dump($_FILES);
-    exit;
+    header('location: indexProduto.php');
 
 };
 

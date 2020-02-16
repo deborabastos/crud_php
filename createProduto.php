@@ -1,9 +1,5 @@
 <?php
 // print_r($_POST);
-
-require_once('./includes/valida_form.php');
-
-
 // ****************************** VALIDAÇAO ****************************** 
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
 $nome = $preco = $descricao = $imagem = '';
@@ -48,13 +44,13 @@ if(isset($_POST['submit'])){
 // ****************************** GRAVANDO EM JSON ****************************** 
 //Verificando se há erros no form para, então, enviar
 
-if(isset($_POST['submit'])){
-    if(array_filter($errors)){
+if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido precionado o botão submit
+    if(array_filter($errors)){ // Se tiver erro, avisa. Se não, continua a rotina.
         echo 'Corrija os erros do formulário';
     } else {
 
         // enviar dados para json        
-        if(file_exists('produtos.json')){
+        if(file_exists('produtos.json')){ // continua somente se o arquivo produtos.json existir
             $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
             $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
             $novos_dados = array(                               // captura dados entrados no forumlário
@@ -63,21 +59,16 @@ if(isset($_POST['submit'])){
                 'descricao' => $_POST['descricao'],
                 'imagem' => $_POST['imagem']
             );
-            $php_dados_existentes[] = $novos_dados;   // coloca dados existentes no array de dados existentes
-            $json_produtos = json_encode($php_dados_existentes);
+            $php_dados_existentes[] = $novos_dados;   // junta os dados do formulário no array de dados existentes
+            $json_produtos = json_encode($php_dados_existentes); // transforma o array com todos os dados para o formato json
             
-            if(file_put_contents('produtos.json', $json_produtos)){
-                echo 'Produto salvo com sucesso';
+            if(file_put_contents('produtos.json', $json_produtos)){ // grava os dados já em formato json no arquivo produtos.json.
+                header('location: indexProduto.php');               // Se der certo, redireciona para o index
             };
         } else {
             echo 'JSON file não existe';
         }; 
-
-
     };
-
-
-    
 };
 
 
