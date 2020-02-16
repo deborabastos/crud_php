@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
         $nome = $_POST['nome'];
     };
 
-    // Chegando preco
+    // Checando preco
     if((!empty($_POST['preco'])) && (!filter_var($_POST['preco'], FILTER_VALIDATE_FLOAT))) {
         $errors['preco'] = 'O preço deve ser um número';
     } else {
@@ -44,10 +44,7 @@ if(isset($_POST['submit'])){
 //Verificando se há erros no form para, então, enviar
 
 if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido precionado o botão submit
-    if(array_filter($errors)){ // Se tiver erro, avisa. Se não, continua a rotina.
-        echo 'Corrija os erros do formulário';
-    } else {
-
+    if(!array_filter($errors)){ // Se tiver erro, avisa. Se não, continua a rotina.
         // enviar dados para json        
         if(file_exists('produtos.json')){ // continua somente se o arquivo produtos.json existir
             $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
@@ -69,14 +66,14 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
             if(file_put_contents('produtos.json', $json_produtos)){ // grava os dados já em formato json no arquivo produtos.json.
                 header('location: indexProduto.php');               // Se der certo, redireciona para o index
             };
-        } else {
-            echo 'JSON file não existe';
-        }; 
+        } 
     };
 };
 
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -85,7 +82,8 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
- 
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -109,11 +107,9 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                     <div class="col-6">
                         <div class="form-group">
                             <label for="nome">Nome:</label>
-                            <input type="text" name="nome" id="nome" class="form-control" value="<?= $nome ?>" >
+                            <input type="text" name="nome" id="nome" class="form-control <?php echo $errors['nome']?'is-invalid':''?> " value="<?= $nome ?>" >
                             <div class="text-danger font-weight-bold">
-                                
-                                    <p><?= $errors['nome'] ?></p>
-                            
+                                    <p><?= $errors['nome'] ?></p>                           
                             </div>
                         </div>
                     </div>
@@ -121,7 +117,7 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                         <div class="form-group">
 
                             <label for="preco">Preço:</label>
-                            <input type="text" name="preco" id="preco" class="form-control" placeholder="R$ 00,00" value="<?= $preco ?>">
+                            <input type="text" name="preco" id="preco" class="form-control <?php echo $errors['preco']?'is-invalid':''?>" placeholder="R$ 00,00" value="<?= $preco ?>">
                             <div class="text-danger font-weight-bold">
                                  <p><?= $errors['preco'] ?></p>
                             </div>    
@@ -140,12 +136,10 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                 <div class="row">
                     <div class="col-12">
                         <div class="custom-file altura_file mb-2">
-                            <label for="imagem" class="custom-file-label">Selecione a foto</label>
                             <input type="file" name="imagem" id="imagem" class="custom-file-input" accept="image/*"><br>
-                                <div class="text-danger font-weight-bold">
-                                 
-                                        <p><?= $errors['imagem'] ?></p>
-                                 
+                            <label for="imagem" class="custom-file-label">Selecione a foto</label>
+                                <div class="text-danger font-weight-bold">                                 
+                                        <p><?= $errors['imagem'] ?></p>                                
                                 </div>
                         </div>
                     </div>
@@ -168,6 +162,14 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+        // Faz com que a barra de upload de arquivo mostre o nome original do arquivo escolhido pelo usuário
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -177,6 +179,7 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
