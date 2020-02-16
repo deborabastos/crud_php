@@ -1,6 +1,9 @@
 <?php 
+
+// ********************************* CHAMA FUNCÇÕES *********************************
 require('produtos.php');
 
+// Array com lista de todos os produtos
 $produtos = getProdutos();
 
 ?>
@@ -35,6 +38,7 @@ $produtos = getProdutos();
                 <thead>
                     <tr>
                         <th>id</th>
+                        <th>Imagem</th>                      
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Preço</th>
@@ -45,6 +49,12 @@ $produtos = getProdutos();
                 <?php foreach ($produtos as $produto): ?>
                     <tr>
                         <td> <?= $produto['id']?> </td>
+                        <td> 
+                            <?php if(isset($produto['imagem'])):?>
+                                <img style="width: 60px" src="./img/<?= $produto['imagem'] ?>" alt="" >
+                            <?php endif; ?>
+                        </td>
+ 
                         <td> <?= $produto['nome']?> </td>
                         <td> <?= $produto['descricao']?> </td>
                         <td> <?= $produto['preco']?> </td>

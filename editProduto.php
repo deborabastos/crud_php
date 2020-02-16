@@ -33,7 +33,10 @@ if(isset($_POST['submit'])){
 
 
 };
+
+// ********************************* CHAMA FUNÇÕES *********************************
 require_once('produtos.php');
+
 
 // Verifica se foi passado parâmetro ID, se não, retorna erro
 if (!isset($_GET['id'])){
@@ -41,7 +44,7 @@ if (!isset($_GET['id'])){
     exit;
 }
 
-//Retira o id da URL (GET) e procura o produto com essa ID no json, retornando daods na variável $produto
+//Retira o id da URL (GET) e procura o produto com essa ID no json, retornando dados na variável $produto
 $produtoId = $_GET['id'];
 $produto = getProdutoById($produtoId);
 
@@ -52,23 +55,36 @@ if (!isset($produto)){
     exit;
 };
 
-//
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    updateProduto($_POST, $produtoId);
-    
-    if(isset($_FILES['picture'])) {
-        move_uploaded_file($_FILE['imagem']['tmp_name'], './img/$produtoId.jpeg');
-    
+// ********************************* EDITA PRODUTO *********************************
+if (isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido precionado o botão submit
+    $produto = updateProduto($_POST, $produtoId); // atualiza dos dados do array
 
+
+    // Atualiza foto
+    if(!empty($_FILES['imagem']['name'])) { // Se houve upload de nova foto
+        //Para pegar a extensão da imagem
+        $fileName = $_FILES['imagem']['name'];
+        //Procura o ponto no arquivo
+        $ponto = strpos($fileName, '.');
+        //Pega a string após o ponto até o final
+        $extensao = substr($fileName, $ponto + 1);
+        
+        
+        move_uploaded_file($_FILES['imagem']['tmp_name'], "img/$produtoId.$extensao");
+
+        $produto['extensao'] = $extensao;
+        $produto['imagem'] = $produtoId.".".$extensao;
+
+        updateProduto($produto, $produtoId);
+      
     };
+
+
     header('location: indexProduto.php');
 
 };
 
-    // header('location: indexProduto.php');
 
-
-// !!!!!!!!!!!!!!!!!!!! Está perdendo a imagem ao atualizar
 
 ?>
 

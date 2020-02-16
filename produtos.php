@@ -21,14 +21,20 @@ function getProdutoByID($id){
 
 // Produta na lista um produto pela ID. Atualiza os dados (update) e grava de volta no produtos.json
 function updateProduto($data, $id){
+    
+    $updateProduto = [];
+
     $produtos = getProdutos(); // pega toda a lista de produtos
     foreach ($produtos as $i => $produto){ // percorre toda a lista de produtos
         if($id == $produto['id']){ // seleciona o produto que tem id igual àquela passada em parâmetro
-            $produtos[$i] = array_merge($produto, $data); // atualiza os dados do array produto via merge (mantém os dados que não foram alterados)
+            $produtos[$i] = $updateProduto = array_merge($produto, $data); // atualiza os dados do array produto via merge (mantém os dados que não foram alterados)
+            
         };
     };
 
-    file_put_contents('produtos.json', json_encode($produtos)); // grava no arquivo produtos.json
+    file_put_contents('produtos.json', json_encode($produtos, JSON_PRETTY_PRINT)); // grava no arquivo produtos.json
+
+    return $updateProduto;
 };
 
 

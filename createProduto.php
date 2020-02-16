@@ -1,12 +1,11 @@
 <?php
-// print_r($_POST);
 // ****************************** VALIDAÇAO ****************************** 
+
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
 $nome = $preco = $descricao = $imagem = '';
 
 // Definindo array de erros
 $errors = array('nome' => '','preco' => '', 'imagem' => '');
-
 
 // Executar apenas após o SUBMIT
 if(isset($_POST['submit'])){
@@ -60,7 +59,7 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                 'imagem' => $_POST['imagem']
             );
             $php_dados_existentes[] = $novos_dados;   // junta os dados do formulário no array de dados existentes
-            $json_produtos = json_encode($php_dados_existentes); // transforma o array com todos os dados para o formato json
+            $json_produtos = json_encode($php_dados_existentes, JSON_PRETTY_PRINT); // transforma o array com todos os dados para o formato json
             
             if(file_put_contents('produtos.json', $json_produtos)){ // grava os dados já em formato json no arquivo produtos.json.
                 header('location: indexProduto.php');               // Se der certo, redireciona para o index

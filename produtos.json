@@ -1,26 +1,29 @@
 [
     {
         "id": "1",
-        "nome": "IPhone 7",
-        "preco": "2300",
-        "descricao": "Novinho, 6 meses de uso",
-        "imagem": "iphone.jpeg",
-        "submit": "submit"
+        "nome": "IPhone 8",
+        "preco": "2400",
+        "descricao": "Novinho, 3 meses de uso!!",
+        "imagem": "1.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
     },
     {
         "id": "2",
         "nome": "Bicicleta",
         "preco": "400",
-        "descricao": "Marcas normais de uso",
-        "imagem": "bike.jpeg",
-        "submit": "submit"
+        "descricao": "Marcas normais de uso!",
+        "imagem": "2.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
     },
     {
         "id": "3",
         "nome": "TV 60",
         "preco": "1600.00",
         "descricao": "Excelente TV de 60'. \u00d3timo custo-benef\u00edcio.",
-        "imagem": "tv.jpeg",
-        "submit": "submit"
+        "imagem": "3.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
     }
 ]
