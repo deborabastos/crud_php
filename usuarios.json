@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nome": "D\u00e9bora Bastos",
+        "email": "deborabastos14@gmail.com",
+        "hash": "$2y$10$98qvBnRH3KVe11RBSvOthuennSbtog0ZcdeUb72Mva7.08v61ZIhq"
+    },
+    {
+        "id": 2,
+        "nome": "Talita Duarte",
+        "email": "tallitaduarte@gmail.com",
+        "hash": "$2y$10$06OXHfFLpYlV0TYSDsgNiunkJN75O0yfWopPzolaODU\/6\/K2JmSJS"
+    },
+    {
+        "id": 3,
+        "nome": "Lays Caixeta",
+        "email": "laaugusta@hotmail.com",
+        "hash": "$2y$10$q2yBgdgpWsHJZIfjqUzxJOt37sjSzaIrIpufL\/ee7.DIIEu7DWm6S"
+    },
+    {
+        "id": 4,
+        "nome": "David Alves",
+        "email": "david@hotmail.com",
+        "hash": "$2y$10$CpIO8MEvCO4V1Whn8IM5kupGdL9HY3xmITOhoPojuxvQto8icgPYa"
+    }
+]

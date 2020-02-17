@@ -4,7 +4,9 @@
         "nome": "IPhone 8",
         "preco": "2500",
         "descricao": "IPhone 8. Apenas 3 meses de uso",
-        "imagem": "iphone.jpg"
+        "imagem": "1.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
     },
     {
         "id": 2,

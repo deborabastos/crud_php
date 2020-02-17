@@ -17,3 +17,9 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.listaUs {
+    height: 467px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

@@ -38,6 +38,9 @@ if(isset($_POST['submit'])){
 require_once('produtos.php');
 
 
+
+// ********************************* VERIFICAÇÕES *********************************
+
 // Verifica se foi passado parâmetro ID, se não, retorna erro
 if (!isset($_GET['id'])){
     include_once('./includes/not_found.php');
@@ -47,7 +50,6 @@ if (!isset($_GET['id'])){
 //Retira o id da URL (GET) e procura o produto com essa ID no json, retornando dados na variável $produto
 $produtoId = $_GET['id'];
 $produto = getProdutoById($produtoId);
-
 
 // Verifica se existe o ID, se não, retorna erro
 if (!isset($produto)){

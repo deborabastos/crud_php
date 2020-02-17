@@ -40,12 +40,11 @@ if(isset($_POST['submit'])){
 
 };
 
-// ****************************** GRAVANDO EM JSON ****************************** 
+// ****************************** CRIA PRODUTO ****************************** 
 //Verificando se há erros no form para, então, enviar
-
 if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido precionado o botão submit
-    if(!array_filter($errors)){ // Se tiver erro, avisa. Se não, continua a rotina.
-        // enviar dados para json        
+    if(!array_filter($errors)){ // Se não tiver erro, continua a rotina       
+        
         if(file_exists('produtos.json')){ // continua somente se o arquivo produtos.json existir
             $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
             $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
