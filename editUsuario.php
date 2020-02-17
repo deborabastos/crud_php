@@ -1,5 +1,38 @@
+<?php
+
+// ****************************** VALIDAÇAO ****************************** 
+// Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
+$nome = $email = $hash = '';
+
+// ********************************* CHAMA FUNÇÕES *********************************
+require_once('usuarios.php');
+
+
+// ********************************* VERIFICAÇÕES *********************************
+
+// Verifica se foi passado parâmetro ID, se não, retorna erro
+if (!isset($_GET['id'])){
+    include_once('./includes/not_found.php');
+    exit;
+}
+
+//Retira o id da URL (GET) e procura o usuario com essa ID no json, retornando dados na variável $usuario
+$usuarioId = $_GET['id'];
+$usuario = getUsuarioById($usuarioId);
+
+// Verifica se existe o ID, se não, retorna erro
+if (!isset($usuario)){
+    include_once('./includes/not_found.php');
+    exit;
+};
+
+?>
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,25 +64,30 @@
                     <form action="#" method="POST" class="">
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
-                                <input type="text" name="nome" id="nome" class="form-control" value=" " >
+                                <input type="text" name="nome" id="nome" class="form-control" value="<?= $usuario['nome'] ?>" >
                             </div>
 
                             <div class="form-group">
                                 <label for="email">E-mail:</label>
-                                <input type="text" name="emai." id="email" class="form-control" placeholder="" value="">
+                                <input type="text" name="emai." id="email" class="form-control" placeholder="" value="<?= $usuario['email'] ?>">
                             </div>
                             
                             <div class="form-group">
-                                <label for="senha" class="mb-0">Senha:</label>
-                                    <small id="senha" class="form-text text-muted mt-0 mb-1">
+                                <label for="senhaAtual" class="mb-0">Senha atual:</label>
+                                <input type="password" name="senhaAtual" id="senhaAtual" class="form-control" placeholder="" value="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="novaSenha" class="mb-0">Nova senha:</label>
+                                    <small id="novaSenha" class="form-text text-muted mt-0 mb-1">
                                         Mínimo 6 caracteres
                                     </small>
-                                <input type="text" name="senha" id="senha" class="form-control" placeholder="" value="">
+                                <input type="password" name="novaSenha" id="novaSenha" class="form-control" placeholder="" value="">
                             </div>
                             
                             <div class="form-group">
-                                <label for="confirma-senha">Confirmar senha:</label>
-                                <input type="text" name="confirma-senha" id="confirma-senha" class="form-control" placeholder="" value="">
+                                <label for="confirmaSenha">Confirmar nova senha:</label>
+                                <input type="password" name="confirmaSenha" id="confirmaSenha" class="form-control" placeholder="" value="">
                                                                                                   
                             </div>
 

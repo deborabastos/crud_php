@@ -1,5 +1,6 @@
 <?php
 
+
 // ********************************* CHAMA FUNCÇÕES *********************************
 require('usuarios.php');
 
@@ -71,8 +72,9 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
             $json_usuarios = json_encode($php_dados_existentes, JSON_PRETTY_PRINT); // transforma o array com todos os dados para o formato json
             
             if(file_put_contents('usuarios.json', $json_usuarios)){ // grava os dados já em formato json no arquivo usuarios.json.
-                header('location: createUsuario.php');               // Se der certo, redireciona para o index
+                header('location: createUsuario.php'); 
             };
+
         } 
     };
 };
@@ -123,8 +125,11 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                                             <p><?= $usuario['email']?></p>
                                         </div>  
                                         <div class="col-4 d-flex align-items-end flex-column">                                    
-                                            <a role='button' href="editUsuario.php" class="btn btn-info btn-block">Editar</a>
-                                            <button class="btn btn-danger btn-block">Excluir</button>
+                                            <a href="editUsuario.php?id=<?= $usuario['id']?>" role='button' class="btn btn-info btn-sm mb-1" >Editar</a>
+                                            <form method="POST" action="deleteUsuario.php">
+                                                <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
+                                                <button class="btn btn-danger btn-sm">Excluir</button>
+                                            </form> 
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +166,7 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                                     <small id="senha" class="form-text text-muted mt-0 mb-1">
                                         Mínimo 6 caracteres
                                     </small>
-                                <input type="text" name="senha" id="senha" class="form-control <?php echo $errors['senha']?'is-invalid':''?>" placeholder="" value="">
+                                <input type="password" name="senha" id="senha" class="form-control <?php echo $errors['senha']?'is-invalid':''?>" placeholder="" value="">
                                 <div class="text-danger font-weight-bold">
                                     <p><?= $errors['senha'] ?></p>                           
                                 </div>
@@ -169,7 +174,7 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                             
                             <div class="form-group">
                                 <label for="confirmaSenha">Confirmar senha:</label>
-                                <input type="text" name="confirmaSenha" id="confirmaSenha" class="form-control <?php echo $errors['confirmaSenha']?'is-invalid':''?>" placeholder="" value="">
+                                <input type="password" name="confirmaSenha" id="confirmaSenha" class="form-control <?php echo $errors['confirmaSenha']?'is-invalid':''?>" placeholder="" value="">
                                 <div class="text-danger font-weight-bold">
                                     <p><?= $errors['confirmaSenha'] ?></p>                           
                                 </div>                                                         
