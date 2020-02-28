@@ -2,29 +2,46 @@
     {
         "id": 1,
         "nome": "IPhone 8",
-        "preco": "2500",
-        "descricao": "IPhone 8. Apenas 3 meses de uso",
-        "imagem": "iphone.jpg"
+        "preco": "2100",
+        "descricao": "IPhone 8, 64b. Muito conservado.",
+        "imagem": "1.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
     },
     {
         "id": 2,
-        "nome": "Viol\u00e3o",
-        "preco": "230",
-        "descricao": "Viol\u00e3o Giani comprado em 2005",
-        "imagem": "violao.jpg"
+        "nome": "Bicicleta aro 20",
+        "preco": "360",
+        "descricao": "Bike usada, mas em bom estado. Aro 20.",
+        "imagem": "2.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
     },
     {
         "id": 3,
-        "nome": "Bicicleta aro 20",
+        "nome": "Viol\u00e3o ",
         "preco": "450",
-        "descricao": "Bicicleta aro 20. Usada por poucos meses",
-        "imagem": "2.jpg"
+        "descricao": "Viol\u00e3o Giani, 3 anos de uso.",
+        "imagem": "3.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
     },
     {
         "id": 4,
-        "nome": "TV 60'",
-        "preco": "1400",
-        "descricao": "TV de 60 polegadas em pleno funcionamento",
-        "imagem": "tv.jpg"
+        "nome": "Tv 60'",
+        "preco": "1800",
+        "descricao": "TV Sony Bravia, 60'",
+        "imagem": "4.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
+    },
+    {
+        "id": 5,
+        "nome": "Carro semi novo",
+        "preco": "25000",
+        "descricao": "Bel\u00edssimo semi novo",
+        "imagem": "5.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
     }
 ]
