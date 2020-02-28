@@ -1,5 +1,7 @@
 <?php
-require_once('produtos.php');
+session_start();
+
+require('./includes/produtos.inc.php');
 
 if (!isset($_GET['id'])){
     include_once('./includes/not_found.php');
