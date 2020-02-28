@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 // ****************************** VALIDAÇAO ****************************** 
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
@@ -35,8 +37,7 @@ if(isset($_POST['submit'])){
 };
 
 // ********************************* CHAMA FUNÇÕES *********************************
-require_once('produtos.php');
-
+require('./includes/produtos.inc.php');
 
 
 // ********************************* VERIFICAÇÕES *********************************
