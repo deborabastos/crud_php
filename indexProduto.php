@@ -1,7 +1,9 @@
 <?php 
+session_start();
+
 
 // ********************************* CHAMA FUNCÇÕES *********************************
-require('produtos.php');
+require('./includes/produtos.inc.php');
 
 // Array com lista de todos os produtos
 $produtos = getProdutos();
