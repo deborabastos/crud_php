@@ -1,11 +1,12 @@
 <?php
-
+session_start();
 
 // ********************************* CHAMA FUNCÇÕES *********************************
-require('usuarios.php');
+require('./includes/usuarios.inc.php');
 
 // Array com lista de todos os produtos
 $usuarios = getUsuarios();
+
 
 
 // ****************************** VALIDAÇAO ****************************** 
@@ -17,7 +18,7 @@ $nome = $email = $senha = $confirmaSenha = '';
 $errors = array('nome' => '','email' => '', 'senha' => '', 'confirmaSenha' => '');
 
 // Executar apenas após o SUBMIT
-if(isset($_POST['submit'])){
+if(isset($_POST['signup-submit'])){
 
     // Checando nome
     if(empty($_POST['nome'])){
@@ -52,32 +53,45 @@ if(isset($_POST['submit'])){
 
 // ****************************** CRIA USUÁRIO ****************************** 
 //Verificando se há erros no form para, então, enviar
-if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido precionado o botão submit
+if(isset($_POST['signup-submit'])){ // faz a rotina a seguir apenas após ter sido precionado o botão submit
     if(!array_filter($errors)){ // Se não tiver erro, continua a rotina       
         
-        if(file_exists('usuarios.json')){ // continua somente se o arquivo usuarios.json existir
-            $json_dados_existentes = file_get_contents('usuarios.json'); //pega os dados existentes no json e coloca em um array
-            $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
-            
-            $ultimo_item = end($php_dados_existentes);
-            $ultimo_id = $ultimo_item['id'];
-            
-            $novos_dados = array( // captura dados entrados no forumlário
-                'id' => ++$ultimo_id,
-                'nome' => $_POST['nome'],
-                'email' => $_POST['email'],
-                'hash' => $hash,
-            );
-            $php_dados_existentes[] = $novos_dados;   // junta os dados do formulário no array de dados existentes
-            $json_usuarios = json_encode($php_dados_existentes, JSON_PRETTY_PRINT); // transforma o array com todos os dados para o formato json
-            
-            if(file_put_contents('usuarios.json', $json_usuarios)){ // grava os dados já em formato json no arquivo usuarios.json.
-                header('location: createUsuario.php'); 
+       // Verifica se e-mail já está cadastrado
+       foreach ($usuarios as $usuario){ // percorre toda a lista de usuarios  
+            if($email == $usuario['email']){ // verifica se existe e-mail na lista
+                $msg = "Este e-mail já está cadastrado!"; // define mensagem de que email já foi cadastrado. ATENÇÃO, SE MUDAR FRASE AQUI, TEM QUE MUDAR NA CONDIÇÃO DO PRÓXIMO IF!!! 
+                header("location: createUsuario.php?msg=".$msg);                
             };
+        }; //fecha foreach 
 
-        } 
-    };
-};
+        if(file_exists('usuarios.json') && ($msg !== "Este e-mail já está cadastrado!")){ // continua somente se email não estiver cadastrado
+                $json_dados_existentes = file_get_contents('usuarios.json'); //pega os dados existentes no json e coloca em um array
+                $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
+
+                // Pega o último ítem do array para extrair o ID e somar 1
+                $ultimo_item = end($php_dados_existentes);
+                $ultimo_id = $ultimo_item['id'];
+                
+                // captura dados entrados no formulário
+                $novos_dados = array( 
+                    'id' => ++$ultimo_id,
+                    'nome' => $_POST['nome'],
+                    'email' => $_POST['email'],
+                    'hash' => $hash,
+                );
+
+                $php_dados_existentes[] = $novos_dados;   // junta os dados do formulário no array de dados existentes
+                $json_usuarios = json_encode($php_dados_existentes, JSON_PRETTY_PRINT); // transforma o array com todos os dados para o formato json
+                
+                    if(file_put_contents('usuarios.json', $json_usuarios)){ // grava os dados já em formato json no arquivo usuarios.json.
+                        $msg = "Novo usuário cadastrado com sucesso";
+
+                        header("location: createUsuario.php?msg=".$msg);
+                    };
+        } // fecha else de gravação de usuário
+    }; // fecha se não tiver erros
+}; //fecha isset
+
 
 
 
@@ -143,7 +157,7 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                 <div class="col-8">
                     <h1>Criar Usuário</h1>
                     
-                    <form action="#" method="POST" class="">
+                    <form action="#" method="POST" class=""> 
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
                                 <input type="text" name="nome" id="nome" class="form-control <?php echo $errors['nome']?'is-invalid':''?> " value="<?= $nome ?>" >
@@ -181,9 +195,18 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" name="submit" value="submit" class="btn btn-primary btn-block">Adicionar</button>
+                                <button type="submit" name="signup-submit" value="submit" class="btn btn-primary btn-block">Adicionar</button>
                             </div>
                     </form>
+
+                    <p style="color: #016ecd; font-weight: 600;  text-align: center"><?php 
+                        
+                        if (!empty($_GET['msg'])){  
+                            echo  $_GET['msg'];
+                        };
+                    
+                    ?> </p>
+
                 </div>
             </div>
 
