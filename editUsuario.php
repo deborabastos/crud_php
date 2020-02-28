@@ -1,11 +1,13 @@
 <?php
+session_start();
+
 
 // ****************************** VALIDAÇAO ****************************** 
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
 $nome = $email = $hash = '';
 
 // ********************************* CHAMA FUNÇÕES *********************************
-require_once('usuarios.php');
+require('./includes/usuarios.inc.php');
 
 
 // ********************************* VERIFICAÇÕES *********************************
@@ -72,13 +74,9 @@ if (!isset($usuario)){
                                 <input type="text" name="emai." id="email" class="form-control" placeholder="" value="<?= $usuario['email'] ?>">
                             </div>
                             
-                            <div class="form-group">
-                                <label for="senhaAtual" class="mb-0">Senha atual:</label>
-                                <input type="password" name="senhaAtual" id="senhaAtual" class="form-control" placeholder="" value="">
-                            </div>
 
                             <div class="form-group">
-                                <label for="novaSenha" class="mb-0">Nova senha:</label>
+                                <label for="novaSenha" class="mb-0">Alterar senha:</label>
                                     <small id="novaSenha" class="form-text text-muted mt-0 mb-1">
                                         Mínimo 6 caracteres
                                     </small>
@@ -91,6 +89,11 @@ if (!isset($usuario)){
                                                                                                   
                             </div>
 
+                            <div class="form-group">
+                                <label for="senhaAtual" class="mb-0">Senha atual:</label>
+                                <input type="password" name="senhaAtual" id="senhaAtual" class="form-control" placeholder="" value="">
+                            </div>
+                            
                             <div class="form-group">
                                 <button type="submit" name="submit" value="submit" class="btn btn-warning btn-block">Editar</button>
                             </div>
