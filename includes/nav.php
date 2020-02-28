@@ -17,13 +17,27 @@
                     <a class="nav-link text-white" href="createUsuario.php">Usuários</a>
                 </li>
             </ul>
-            <span class="nav-item">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="login.php">Logout</a>
-                    </li>
-                </ul>
-            </span>
+
+            <?php
+                if (!isset($_SESSION['nome'])){
+                    echo '<form action="includes/logout.inc.php" method="post">
+                            <span class="nav-item">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="index.php">Logout</a>
+                                    </li>
+                                </ul>
+                            </span>
+                          </form>';
+                };
+            
+            ?>
+
+
+
+
+
+
         </div>
     </div>
 </nav>
