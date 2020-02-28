@@ -22,5 +22,11 @@
         "nome": "Helenice Figueiredo",
         "email": "nice@gmail.com",
         "hash": "$2y$10$AkK\/0lkYstT5XBpErgxn.eWPEhpY0RhAK3kM2p.YeOBan1pKtBLM6"
+    },
+    {
+        "id": 7,
+        "nome": "Lays caixeta",
+        "email": "lays@gmail.com",
+        "hash": "$2y$10$6pVGrnBt\/xlWIkoMSkvY6eqpC1JuecBoqLS5br\/ubxOkd3HxP39AC"
     }
 ]

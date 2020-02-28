@@ -10,17 +10,19 @@
     },
     {
         "id": 2,
-        "nome": "Viol\u00e3o",
+        "nome": "Viol\u00e3o Giani",
         "preco": "230",
         "descricao": "Viol\u00e3o Giani comprado em 2005",
-        "imagem": "violao.jpg"
+        "imagem": "violao.jpg",
+        "submit": "submit"
     },
     {
         "id": 3,
-        "nome": "Bicicleta aro 20",
+        "nome": "Bicicleta Aro 20",
         "preco": "450",
         "descricao": "Bicicleta aro 20. Usada por poucos meses",
-        "imagem": "2.jpg"
+        "imagem": "2.jpg",
+        "submit": "submit"
     },
     {
         "id": 4,

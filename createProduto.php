@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 // ****************************** VALIDAÇAO ****************************** 
 
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
@@ -31,14 +34,12 @@ if(isset($_POST['submit'])){
     $descricao = $_POST['descricao'];
 
     // Checando imagem
-    if(empty($_POST['imagem'])){
+    if(empty($_FILES['imagem']['name'])){
         $errors['imagem']= 'Você precisa escolher uma imagem';
-    } else {
-        $imagem = $_POST['imagem'];
     };
-
-
 };
+
+
 
 // ****************************** CRIA PRODUTO ****************************** 
 //Verificando se há erros no form para, então, enviar
@@ -49,15 +50,35 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
             $json_dados_existentes = file_get_contents('produtos.json'); //pega os dados existentes no json e coloca em um array
             $php_dados_existentes = json_decode($json_dados_existentes, true); // transforma os dados do array em dados php via json_decode
             
+            // Pega o último ítem do array para extrair o ID e somar 1
             $ultimo_item = end($php_dados_existentes);
             $ultimo_id = $ultimo_item['id'];
-            
-            $novos_dados = array( // captura dados entrados no forumlário
-                'id' => ++$ultimo_id,
-                'nome' => $_POST['nome'],
-                'preco' => $_POST['preco'],
-                'descricao' => $_POST['descricao'],
-                'imagem' => $_POST['imagem']
+            $novo_id = ++$ultimo_id;
+
+
+
+            // Grava foto
+            $fileName = $_FILES['imagem']['name'];
+            //Procura o ponto no arquivo
+            $ponto = strpos($fileName, '.');
+            //Pega a string após o ponto até o final
+            $extensao = substr($fileName, $ponto + 1);     
+
+            move_uploaded_file($_FILES['imagem']['tmp_name'], "img/$novo_id.$extensao");
+
+            $imagem = $novo_id.".".$extensao;
+
+
+
+            // captura dados entrados no forumlário
+            $novos_dados = array( 
+                'id' => $novo_id,
+                'nome' => $nome,
+                'preco' => $preco,
+                'descricao' => $descricao,
+                'imagem' => $imagem,
+                'submit' => $_POST['submit'],
+                'extensao' => $extensao
             );
             $php_dados_existentes[] = $novos_dados;   // junta os dados do formulário no array de dados existentes
             $json_produtos = json_encode($php_dados_existentes, JSON_PRETTY_PRINT); // transforma o array com todos os dados para o formato json
@@ -107,7 +128,7 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
             </div>
 
 
-            <form action="#" method="POST" class="">
+            <form action="#" method="POST" class="" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
@@ -142,10 +163,10 @@ if(isset($_POST['submit'])){ // faz a rotina a seguir apenas após ter sido prec
                     <div class="col-12">
                         <div class="custom-file altura_file mb-2">
                             <input type="file" name="imagem" id="imagem" class="custom-file-input" accept="image/*"><br>
+                            <div class="text-danger font-weight-bold">                                 
+                                <p><?= $errors['imagem'] ?></p>                                
+                            </div>
                             <label for="imagem" class="custom-file-label">Selecione a foto</label>
-                                <div class="text-danger font-weight-bold">                                 
-                                        <p><?= $errors['imagem'] ?></p>                                
-                                </div>
                         </div>
                     </div>
                 </div>
