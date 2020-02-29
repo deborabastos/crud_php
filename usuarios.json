@@ -3,30 +3,30 @@
         "id": 1,
         "nome": "D\u00e9bora Bastos",
         "email": "deborabastos14@gmail.com",
-        "hash": "$2y$10$ssWZfbryuz.upJ9rctQmheih7nzLsgrlx0xY3NefedwcOKnWep3rq"
+        "hash": "$2y$10$2B07L5a0QjzQ7e59hHe4x.nEAtXOtFMzmaeBfn2xtY9PSbXGLJYJ2"
     },
     {
         "id": 2,
-        "nome": "Talita Bastos",
+        "nome": "Talita Duarte",
         "email": "tallitaduarte@gmail.com",
-        "hash": "$2y$10$f4fC6bVloq2LoZy62I09XeHt6BxgjO7dztVn9V3hAhS285Imp7aeS"
+        "hash": "$2y$10$KEZyoCIJuDTpMuzZYC5G2ONXbkkR1gWfT\/2lIchQqZGru2cfaI8Ui"
     },
     {
         "id": 3,
-        "nome": "Rafa Bastos",
-        "email": "rafaela@bastos.com",
-        "hash": "$2y$10$cz1mwPgaaOYLXCb4qQdD5ukD4KLHJPHCCjhWefOytwPnrgqCexIi6"
+        "nome": "Fernanda Bastos",
+        "email": "fefabastos@gmail.com",
+        "hash": "$2y$10$EcJAIRgunlbx7ELTK\/X3EOEHh2mbXxvEtEXy2GHyQR9oSzeiv7xGK"
     },
     {
         "id": 4,
-        "nome": "Lays Caixeta",
-        "email": "lays@lays.com",
-        "hash": "$2y$10$P2BMdRhOgN49yCQURD3HUuJiOExK15T5c0XL8f.M0c6QgCYrqfEzq"
+        "nome": "Helenice Figueiredo",
+        "email": "nice@gmail.com",
+        "hash": "$2y$10$AkK\/0lkYstT5XBpErgxn.eWPEhpY0RhAK3kM2p.YeOBan1pKtBLM6"
     },
     {
         "id": 5,
-        "nome": "Araquem Bastos",
-        "email": "araquemb@gmail.com",
-        "hash": "$2y$10$K0zJhGhkPmV\/3mdseqnBaeznlKIPrFQKZwVsMVFBnd1QGJ7fj8SSu"
+        "nome": "Lays Caixeta",
+        "email": "lays@gmail.com",
+        "hash": "$2y$10$fwErr4zzF\/yUb5JU.HDdq.L6wqa.k720og6SEjrq7dlKJM40nhgGa"
     }
 ]

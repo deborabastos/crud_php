@@ -1,10 +1,49 @@
 <?php
 session_start();
 
-
 // ****************************** VALIDAÇAO ****************************** 
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
 $nome = $email = $hash = '';
+
+// Definindo array de erros
+$errors = array('nome' => '','email' => '', 'novaSenha' => '', 'confirmaNovaSenha' => '', 'senhaAtual' => '');
+
+// Executar apenas após o SUBMIT
+if(isset($_POST['submit'])){
+
+    // Checando nome
+    if(empty($_POST['nome'])){
+        $errors['nome'] = 'Você precisa digitar o seu nome';
+
+    } elseif (strlen($_POST['nome']) < 6) {
+        $errors['nome'] = 'O seu nome deve ter no mínimo 6 letras';
+    } else {
+        $nome = $_POST['nome'];
+    };
+
+    // Checando e-mail
+    if((empty($_POST['email'])) || (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) {
+        $errors['email'] = 'Digite um e-mail válido';
+    } else {
+        $email = $_POST['email'];
+    };
+
+    // Checando nova senha
+    if( (empty($_POST['novaSenha'])) || (strlen($_POST['novaSenha']) < 6)){
+        $errors['novaSenha']= 'Sua nova senha deve ter no mínimo 6 caracteres';
+    } else {
+        $hash = password_hash($_POST['novaSenha'], PASSWORD_DEFAULT);
+    };
+
+    // Confirmação de nova senha
+    if(($_POST['confirmaNovaSenha']) !== ($_POST['novaSenha'])){
+        $errors['confirmaNovaSenha'] = 'Sua senha não confere';
+    }
+
+
+};
+
+
 
 // ********************************* CHAMA FUNÇÕES *********************************
 require('./includes/usuarios.inc.php');
@@ -84,8 +123,8 @@ if (!isset($usuario)){
                             </div>
                             
                             <div class="form-group">
-                                <label for="confirmaSenha">Confirmar nova senha:</label>
-                                <input type="password" name="confirmaSenha" id="confirmaSenha" class="form-control" placeholder="" value="">
+                                <label for="confirmaNovaSenha">Confirmar nova senha:</label>
+                                <input type="password" name="confirmaNovaSenha" id="confirmaNovaSenha" class="form-control" placeholder="" value="">
                                                                                                   
                             </div>
 

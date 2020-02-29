@@ -44,7 +44,7 @@ if(isset($_POST['signup-submit'])){
         $hash = password_hash($_POST['senha'], PASSWORD_DEFAULT);
     };
 
-    // Checando confirmação de senha
+    // Confirmação de senha
     if(($_POST['confirmaSenha']) !== ($_POST['senha'])){
         $errors['confirmaSenha'] = 'Sua senha não confere';
     }
@@ -139,7 +139,7 @@ if(isset($_POST['signup-submit'])){ // faz a rotina a seguir apenas após ter si
                                             <p><?= $usuario['email']?></p>
                                         </div>  
                                         <div class="col-4 d-flex align-items-end flex-column">                                    
-                                            <a href="editUsuario.php?id=<?= $usuario['id']?>" role='button' class="btn btn-info btn-sm mb-1" >Editar</a>
+                                            <a href="showUsuario.php?id=<?= $usuario['id']?>" role='button' class="btn btn-warning btn-sm mb-1" >Visualizar</a>
                                             <form method="POST" action="deleteUsuario.php">
                                                 <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
                                                 <button class="btn btn-danger btn-sm">Excluir</button>
