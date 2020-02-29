@@ -7,8 +7,6 @@ require('./includes/usuarios.inc.php');
 // Array com lista de todos os produtos
 $usuarios = getUsuarios();
 
-
-
 // ****************************** VALIDAÇAO ****************************** 
 
 // Para que não dê erro em lembrar os dados digitados após a primeira submissão, dizemos que a variável é vazia até que seja definido algo
@@ -121,7 +119,6 @@ if(isset($_POST['signup-submit'])){ // faz a rotina a seguir apenas após ter si
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">&lt;Desafio PHP/&gt;</a>
-
             </div>
         </nav>
     </header>    
@@ -182,7 +179,13 @@ if(isset($_POST['signup-submit'])){ // faz a rotina a seguir apenas após ter si
                             </div>
                     </form>
 
-
+                    <p style="color: #016ecd; font-weight: 600;  text-align: center"><?php 
+                        
+                        if (!empty($_GET['msg'])){  
+                            echo  $_GET['msg'];
+                        };
+                    
+                    ?> </p>
 
 
                 </div>

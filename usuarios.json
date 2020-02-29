@@ -22,5 +22,11 @@
         "nome": "Lays Caixeta",
         "email": "lays@lays.com",
         "hash": "$2y$10$P2BMdRhOgN49yCQURD3HUuJiOExK15T5c0XL8f.M0c6QgCYrqfEzq"
+    },
+    {
+        "id": 5,
+        "nome": "Araquem Bastos",
+        "email": "araquemb@gmail.com",
+        "hash": "$2y$10$K0zJhGhkPmV\/3mdseqnBaeznlKIPrFQKZwVsMVFBnd1QGJ7fj8SSu"
     }
 ]

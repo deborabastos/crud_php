@@ -25,23 +25,5 @@
         "imagem": "4.jpg",
         "submit": "submit",
         "extensao": "jpg"
-    },
-    {
-        "id": 5,
-        "nome": "Carro semi novo",
-        "preco": "25000",
-        "descricao": "Bel\u00edssimo semi novo",
-        "imagem": "5.jpg",
-        "submit": "submit",
-        "extensao": "jpg"
-    },
-    {
-        "id": 6,
-        "nome": "Bicicleta aro 20",
-        "preco": "250",
-        "descricao": "Bicicleta Caloi aro 20. Muito linda.",
-        "imagem": "6.jpg",
-        "submit": "submit",
-        "extensao": "jpg"
     }
 ]

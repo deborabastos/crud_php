@@ -1,6 +1,6 @@
 <?php
 // ********************************* CHAMA FUNÇÕES *********************************
-require_once('produtos.php');
+require('./includes/produtos.inc.php');
 
 
 // Verifica se foi passado parâmetro ID, se não, retorna erro
