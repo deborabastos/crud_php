@@ -2,7 +2,7 @@
     {
         "id": 1,
         "nome": "IPhone 7",
-        "preco": "2100",
+        "preco": "1200",
         "descricao": "IPhone 7, 64b. Muito conservado.",
         "imagem": "1.jpg",
         "submit": "submit",
@@ -28,11 +28,11 @@
     },
     {
         "id": 4,
-        "nome": "Carro semi novo",
-        "preco": "25000",
-        "descricao": "Carro da FIAT semi novo.",
-        "imagem": "5.jpg",
+        "nome": "Carro Futurista",
+        "preco": "200000",
+        "descricao": "Muito lindo!",
+        "imagem": "4.24.22.png",
         "submit": "submit",
-        "extensao": "jpg"
+        "extensao": "24.22.png"
     }
 ]
