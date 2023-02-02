@@ -1,15 +1,24 @@
 [
     {
         "id": 1,
-        "nome": "IPhone 7",
-        "preco": "1200",
-        "descricao": "IPhone 7, 64b. Muito conservado.",
+        "nome": "IPhone 8",
+        "preco": "1700",
+        "descricao": "IPhone 8, 64b. Muito conservado!!! N\u00e3o perca!!!",
         "imagem": "1.jpg",
         "submit": "submit",
         "extensao": "jpg"
     },
     {
         "id": 2,
+        "nome": "Bicicleta aro 20",
+        "preco": "360",
+        "descricao": "Bike usada, mas em bom estado. Aro 20.",
+        "imagem": "2.jpg",
+        "submit": "submit",
+        "extensao": "jpg"
+    },
+    {
+        "id": 3,
         "nome": "Viol\u00e3o ",
         "preco": "450",
         "descricao": "Viol\u00e3o Giani, 3 anos de uso.",
@@ -18,21 +27,12 @@
         "extensao": "jpg"
     },
     {
-        "id": 3,
-        "nome": "Tv 60'",
-        "preco": "1800",
-        "descricao": "TV Sony Bravia, 60'",
-        "imagem": "4.jpg",
-        "submit": "submit",
-        "extensao": "jpg"
-    },
-    {
         "id": 4,
-        "nome": "Carro Futurista",
-        "preco": "200000",
-        "descricao": "Muito lindo!",
-        "imagem": "4.24.22.png",
+        "nome": "TV Sony Bravia",
+        "preco": "550",
+        "descricao": "seminova",
+        "imagem": "4.47.53.png",
         "submit": "submit",
-        "extensao": "24.22.png"
+        "extensao": "47.53.png"
     }
 ]
