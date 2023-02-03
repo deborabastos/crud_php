@@ -116,7 +116,7 @@ if(isset($_POST['signup-submit'])){ // faz a rotina a seguir apenas após ter si
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #563d7c;"">
             <div class="container">
                 <a class="navbar-brand" href="#">&lt;Desafio PHP/&gt;</a>
             </div>
