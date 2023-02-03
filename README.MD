@@ -1,6 +1,6 @@
 # CRUD PHP
 
-Este projeto visa a criação - em PHP puro (sem uso de framework) - de um sistema web com autenticação e capaz de realizar as principais operações necessárias em um banco de dados (Create, Read, Update, Delete).
+Este projeto visa a criação, em PHP, de um sistema web com autenticação e capaz de realizar as principais operações necessárias em um banco de dados (Create, Read, Update, Delete).
 
 ### Algumas telas do projeto:
 
