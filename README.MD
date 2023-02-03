@@ -23,6 +23,5 @@ Para que o sistema de cadastro funcione, após clonar o repositório é necessá
 
 Caso não tenham permissão, pode ser dada usando <code>`chmod 777 *`</code>
 
-
 </p>
 </details>
