@@ -18,10 +18,8 @@ Este projeto visa a criação - em PHP puro (sem uso de framework) - de um siste
 <details>
 <summary><ins>Notas de reprodutibilidade</ins></summary>
 <p>
-
 Para que o sistema de cadastro funcione, após clonar o repositório é necessário verificar se todos os arquivos têm permissão para ler, escrever e executar <code>(`ls -la`)</code>.
 
 Caso não tenham permissão, pode ser dada usando <code>`chmod 777 *`</code>
-
 </p>
 </details>
