@@ -1,6 +1,6 @@
 # CRUD PHP
 
-Este projeto visa a criação - em PHP puro (sem uso de frameworks) - de um sistema web com autenticação e capaz de realizar as principais operações necessárias em um banco de dados (Create, Read, Update, Delete).
+Este projeto visa a criação - em PHP puro (sem uso de framework) - de um sistema web com autenticação e capaz de realizar as principais operações necessárias em um banco de dados (Create, Read, Update, Delete).
 
 ### Algumas telas do projeto:
 
@@ -15,6 +15,14 @@ Este projeto visa a criação - em PHP puro (sem uso de frameworks) - de um sist
 ![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.17.30.png)
 ![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.17.38.png)
 
-Para que o sistema de cadastro funcione, após clonar o repositório é necessário verificar se todos os arquivos têm permissão para ler, escrever e executar (`ls -la`).
+<details>
+<summary><ins>Notas de reprodutibilidade</ins></summary>
+<p>
 
-Caso não tenham permissão, pode ser dada usando `chmod 777 *`
+Para que o sistema de cadastro funcione, após clonar o repositório é necessário verificar se todos os arquivos têm permissão para ler, escrever e executar <code>(`ls -la`)</code>.
+
+Caso não tenham permissão, pode ser dada usando <code>`chmod 777 *`</code>
+
+
+</p>
+</details>
