@@ -10,3 +10,7 @@ Caso não tenham permissão, pode ser dada usando `chmod 777 *`
 ![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.16.08.png)
 ![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.16.20.png)
 ![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.16.59.png)
+![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.17.16.png)
+![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.17.24.png)
+![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.17.30.png)
+![alt text](./screen/Screen%20Shot%202023-02-03%20at%2000.17.38.png)
